@@ -38,7 +38,7 @@ def signup(request):
                 user1 = auth.authenticate(username=username,password=pass1)
                 if user1 is not None:
                     auth.login(request,user1)
-                    return render(request,'home.html',context)
+                    return render(request,'index.html',context)
                 
 
 
