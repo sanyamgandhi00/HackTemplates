@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.urls import reverse
-from .forms import sample_form
+from .forms import sample_form, answer_form
 
 def index(request):
     return render(request, 'index.html')
@@ -70,7 +70,7 @@ def logout(request):
     return redirect('/')
 
 
-def sample_form(request):
+def sample_forms(request):
     context = {}
     if request.method == 'POST':
         Sample = sample_form(request.POST, request.FILES)
@@ -87,4 +87,22 @@ def sample_form(request):
         Sample = sample_form()
         context['sample'] = Sample
         return render(request, 'sample.html', context)
+
+
+
+def student_forms(request):
+    context = {}
+    if request.method == 'POST':
+        Answer = answer_form(request.POST, request.FILES)
+        context['answer'] = Answer
+        if Answer.is_valid():
+            Answer.save()
+            Roll = request.POST['Roll']
+            obj = Answer.instance
+            student_answer.objects.filter(answer=obj.answer).update(roll=Roll)
+        return redirect('home')
+    else:
+        Answer = answer_form()
+        context['answer'] = Answer
+        return render(request, 'student.html', context)
 

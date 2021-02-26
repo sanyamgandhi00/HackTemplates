@@ -9,3 +9,11 @@ class sample_answer(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class student_answer(models.Model):
+    roll = models.CharField(max_length=255)
+    answer = models.FileField(upload_to='answer', blank=False, null=False)
+
+    def __str__(self):
+        return self.roll

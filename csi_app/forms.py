@@ -10,3 +10,9 @@ class sample_form(forms.ModelForm):
     class Meta:
         model = sample_answer
         fields = ['sample']
+
+class answer_form(forms.ModelForm):
+
+    class Meta:
+        model = student_answer
+        fields = ['answer']
