@@ -9,9 +9,14 @@ from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.models import User, auth
 from django.urls import reverse
+from .forms import sample_form
 
 def index(request):
     return render(request, 'index.html')
+
+def graph(request):
+    return render(request, 'graph.html')
+
 
 def signup(request):
     context = {}
@@ -38,7 +43,7 @@ def signup(request):
                 user1 = auth.authenticate(username=username,password=pass1)
                 if user1 is not None:
                     auth.login(request,user1)
-                    return render(request,'index.html',context)
+                    return redirect('home')
                 
 
 
@@ -52,7 +57,7 @@ def login(request):
         user = auth.authenticate(username=username,password=passw)
         if user is not None:
             auth.login(request,user)
-            return HttpResponseRedirect(reverse('home'))
+            return redirect('home')
         else:
             messages.info(request,'Invalid credentials')
             return redirect('home')
@@ -63,3 +68,23 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
+
+
+def sample_form(request):
+    context = {}
+    if request.method == 'POST':
+        Sample = sample_form(request.POST, request.FILES)
+        context['sample'] = Sample
+        if Sample.is_valid():
+            Sample.save()
+            Name = request.POST['Name']
+            Email = request.POST['Email']
+            College = request.POST['College']
+            obj = Sample.instance
+            sample_answer.objects.filter(sample=obj.sample).update(name=Name, email=Email, college=College)
+        return redirect('home')
+    else:
+        Sample = sample_form()
+        context['sample'] = Sample
+        return render(request, 'sample.html', context)
+

@@ -134,13 +134,12 @@
     <nav class="navbar peach-gradient sticky-top navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="{% url 'home' %}">NRITYAM</a>
                 <a href="{% url 'home' %}" class="nav-link">ABOUT</a>
-                <a href="{% url 'home' %}" class="nav-link">GALLERY</a>
+                
                 {% if user.is_authenticated %}
                 <a href="{% url 'logout' %}" class="nav-link">LOG OUT</a>
-                <a href="{% url 'home' %}" class="nav-link">BHARATANATYAM</a>
-                <a href="{% url 'home' %}" class="nav-link">FEEDBACK</a>
                 <div style="float: right;">
                 <a class="nav-link" >Hello, {{user.username}}</a>
+                <a href="{% url 'sample' %}" class="nav-link">SAMPLE</a>
                 </div>
                 {% else %}
                 <a data-toggle="modal" data-target="#loginmodal" class="nav-link">LOG IN</a>
