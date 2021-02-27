@@ -56,7 +56,7 @@
   
       #img{
         float: right;
-        width: 1000px;
+        width: 800px;
         padding-left: 100px;
       }
       #heading{
@@ -65,7 +65,7 @@
       }
   
       span{
-        color: darkorange;
+        color: darkblue;
         font-weight: bold;
       }
   
@@ -131,8 +131,8 @@
   </style>
   <body>
   
-    <nav class="navbar peach-gradient sticky-top navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'home' %}">NRITYAM</a>
+    <nav class="navbar blue-gradient sticky-top navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'home' %}">GRADEASY</a>
                 <a href="{% url 'home' %}" class="nav-link">ABOUT</a>
                 
                 {% if user.is_authenticated %}
@@ -140,6 +140,7 @@
                 <div style="float: right;">
                 <a class="nav-link" >Hello, {{user.username}}</a>
                 <a href="{% url 'sample' %}" class="nav-link">SAMPLE</a>
+                <a href="{% url 'student' %}" class="nav-link">CHECK</a>
                 </div>
                 {% else %}
                 <a data-toggle="modal" data-target="#loginmodal" class="nav-link">LOG IN</a>
@@ -157,7 +158,7 @@
       {% csrf_token %}
       <div class="modal-content form-elegant">
         <!--Header-->
-        <div class="modal-header peach-gradient text-center">
+        <div class="modal-header blue-gradient text-center">
           <h4 class="modal-title white-text w-100 font-weight-bold py-2">Login</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true" class="white-text">&times;</span>
@@ -178,7 +179,7 @@
          
 
           <div class="text-center mb-3">
-            <button type="submit" class="btn peach-gradient btn-block btn-rounded z-depth-1a">Sign in</button>
+            <button type="submit" class="btn peacblueh-gradient btn-block btn-rounded z-depth-1a">Sign in</button>
           </div>
         </div>
       </div>
@@ -196,7 +197,7 @@ aria-hidden="true">
     {% csrf_token %}
     <div class="modal-content form-elegant">
       <!--Header-->
-      <div class="modal-header peach-gradient text-center">
+      <div class="modal-header blue-gradient text-center">
         <h4 class="modal-title white-text w-100 font-weight-bold py-2">Register</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true" class="white-text">&times;</span>
@@ -231,7 +232,7 @@ aria-hidden="true">
         </div>
 
         <div class="text-center mb-2">
-          <button type="submit" class="btn peach-gradient btn-block btn-rounded z-depth-1a">Sign Up</button>
+          <button type="submit" class="btn blue-gradient btn-block btn-rounded z-depth-1a">Sign Up</button>
         </div>
       </div>
     </div>

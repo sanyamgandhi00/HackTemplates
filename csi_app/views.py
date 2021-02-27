@@ -80,8 +80,9 @@ def sample_forms(request):
             Name = request.POST['Name']
             Email = request.POST['Email']
             College = request.POST['College']
+            Code = request.POST['Code']
             obj = Sample.instance
-            sample_answer.objects.filter(sample=obj.sample).update(name=Name, email=Email, college=College)
+            sample_answer.objects.filter(sample=obj.sample).update(name=Name, email=Email, college=College, code=Code)
         return redirect('home')
     else:
         Sample = sample_form()
@@ -98,8 +99,9 @@ def student_forms(request):
         if Answer.is_valid():
             Answer.save()
             Roll = request.POST['Roll']
+            Code = request.POST['Code']
             obj = Answer.instance
-            student_answer.objects.filter(answer=obj.answer).update(roll=Roll)
+            student_answer.objects.filter(answer=obj.answer).update(roll=Roll,code=Code)
         return redirect('home')
     else:
         Answer = answer_form()
